@@ -1,23 +1,30 @@
 class Category {
-  String name;
-  float  height = HEIGHT;
+  String title;
+  float  height;
   float  width;
+  color  col;
   Category(JSONObject _json) {
-    this.name   = _json.getString("title");
+    this.title  = _json.getString("title");
+    this.height = _json.getFloat("height");
     this.width  = _json.getFloat("width");
+    this.col    = color((int)random(0, 255), (int)random(0, 255), (int)random(0, 255));
   }
-  
+
   Category(Category _c) {
-    this.name   = _c.name;
+    this.title  = _c.title;
+    this.height = _c.height;
     this.width  = _c.width;
+    this.col    = _c.col;
   }
-  
+
   Category(Category _c, float _width) {
-    this.name   = _c.name;
+    this.title  = _c.title;
+    this.height = _c.height;
     this.width  = _width;
+    this.col    = _c.col;
   }
-  
-  void reduceWidth(float _diff){
+
+  void reduceWidth(float _diff) {
     this.width -= _diff;
   }
 }
