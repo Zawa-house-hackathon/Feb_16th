@@ -36,3 +36,10 @@ void println(Shelf s) {
     println("");
   }
 }
+
+void println(Optimizer o, int order) {
+  for(int i = 0; i < order; i++){
+    println(o.permList.get(i).evaluate);
+    println(o.permList.get(i));
+  }
+}

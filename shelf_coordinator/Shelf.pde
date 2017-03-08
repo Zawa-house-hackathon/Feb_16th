@@ -22,12 +22,18 @@ class Shelf {
     this.shelf.add(t);
   }
 
+  void add(int stage, Tray t) {
+    this.shelf.add(stage, t);
+  }
+
   void add(int stage, Category c) {
-    try {
-      this.shelf.get(stage).add(c);
-    }
-    catch(IndexOutOfBoundsException e) {
-      e.printStackTrace();
+    this.shelf.get(stage).add(c);
+  }
+
+  void addAll(Shelf s) {
+    if (this.width != s.width || this.height != s.height) return;
+    for (Tray t : s.shelf) {
+      this.shelf.add(t);
     }
   }
 
@@ -45,6 +51,14 @@ class Shelf {
 
   int size() {
     return this.shelf.size();
+  }
+
+  float margin(int stage) {
+    return this.shelf.get(stage).margin(this.width);
+  }
+
+  float height(int stage) {
+    return this.shelf.get(stage).height();
   }
 
   void sort() {

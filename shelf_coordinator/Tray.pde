@@ -13,6 +13,10 @@ class Tray {
     Collections.sort(this.tray, new CategoryComparator());
   }
 
+  Tray(Tray original) {
+    this.tray = new ArrayList<Category>(original.tray);
+  }
+
   void add(Category c) {
     this.tray.add(c);
   }
@@ -39,6 +43,14 @@ class Tray {
 
   float margin(float shelfWidth) {
     return shelfWidth - this.width();
+  }
+
+  float height() {
+    float highest = 0;
+    for (Category c : this.tray) {
+      highest = max(c.height, highest);
+    }
+    return highest;
   }
 
   void sort() {
